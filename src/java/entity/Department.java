@@ -25,6 +25,10 @@ public class Department {
         this.note = note;
     }
 
+    public Department(String namedp, String detail, String note) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getDepartmentID() {
         return departmentID;
     }

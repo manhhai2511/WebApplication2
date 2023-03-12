@@ -122,15 +122,146 @@ public class DepartmentDAOImpl extends DBContext implements DepartmentDAO {
         return (int) Math.ceil((double) totalPage / 6);
     }
     
+    public void add(String name,String detail, String note) throws Exception {
+        String query = "INSERT INTO Department\n"
+                + "           ([DepartmentName]\n"
+                + "           ,[Detail]\n"
+                + "           ,[Note])\n"
+                + "     VALUES\n"
+                + "           (?,?,?)";
+
+        Connection conn = null;
+        PreparedStatement prepare = null;
+
+        try {
+//            ps = conn.prepareStatement(query);
+
+            conn = getConnection();
+            prepare = conn.prepareStatement(query);
+            prepare.setString(1, name);
+            prepare.setString(2, detail);
+            prepare.setString(3, note);
+            prepare.executeUpdate();
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            closePrepareStatement(prepare);
+            closeConnection(conn);
+        }
+
+    }
+    public boolean deleteAccount(String id) throws Exception {
+        String query = "	delete from Department where DepartmentID = ?\n";
+
+        Connection conn = null;
+        PreparedStatement prepare = null;
+
+        try {
+//            ps = conn.prepareStatement(query);
+
+            conn = getConnection();
+            prepare = conn.prepareStatement(query);
+            prepare.setString(1, id);
+            prepare.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            closePrepareStatement(prepare);
+            closeConnection(conn);
+            return false;
+        }
+
+    }
+    
+    public Department getDepartmentByID(String id) throws Exception {
+        String query = "SELECT * FROM Department WHERE departmentID = ?";
+        Connection conn = null;
+        PreparedStatement prepare = null;
+        ResultSet rs = null;
+        try {
+//            ps = conn.prepareStatement(query);
+//            ps.setString(1, id);
+//            rs = ps.executeQuery();
+
+            conn = getConnection();
+            prepare = conn.prepareStatement(query);
+            prepare.setString(1, id);
+            rs = prepare.executeQuery();
+            while (rs.next()) {
+                return new Department(rs.getInt(1), rs.getString(2),
+                        rs.getString(3), rs.getString(4));
+            }
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            closeRS(rs);
+            closePrepareStatement(prepare);
+            closeConnection(conn);
+        }
+        return null;
+    }
+    
+    public Department getAccountByID(int id) throws Exception {
+        String query = "SELECT * FROM Department WHERE departmentID = ?";
+        Connection conn = null;
+        PreparedStatement prepare = null;
+        ResultSet rs = null;
+        try {
+//            ps = conn.prepareStatement(query);
+//            ps.setString(1, id);
+//            rs = ps.executeQuery();
+
+            conn = getConnection();
+            prepare = conn.prepareStatement(query);
+            prepare.setInt(1, id);
+            rs = prepare.executeQuery();
+            while (rs.next()) {
+                return new Department(rs.getInt(1), rs.getString(2),
+                        rs.getString(3), rs.getString(4));
+            }
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            closeRS(rs);
+            closePrepareStatement(prepare);
+            closeConnection(conn);
+        }
+        return null;
+    }
+    
+    public void updateUser(int id, String user, String email, String isSell) throws Exception {
+        String preSql = "update Department set departmentName=? \n"
+                + "               ,Detail=?  \n"
+                + "                ,Note=?  \n"
+                + "                 where departmentID=" + id;
+
+        Connection conn = null;
+        PreparedStatement prepare = null;
+        try {
+//            PreparedStatement ps = conn.prepareStatement(preSql);
+
+            conn = getConnection();
+            prepare = conn.prepareStatement(preSql);
+
+            prepare.setString(1, user);
+            prepare.setString(2, email);
+            prepare.setString(3, isSell);
+            prepare.execute();
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            closePrepareStatement(prepare);
+            closeConnection(conn);
+        }
+
+    }
+    
     public static void main(String[] args) {
         DepartmentDAOImpl dao = new DepartmentDAOImpl();
         try {
-            List<Department> u = new ArrayList<Department>();
-            u = dao.getAllDe();
-            System.out.println(u.isEmpty());
-            for (Department users : u) {
-                System.out.println(users);
-            }
+//            Department d=new Department("á á đfu", "avda334", "abba");
+            dao.add("á á đfu", "avda334", "abba");
 
         } catch (Exception ex) {
             Logger.getLogger(AccountDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
