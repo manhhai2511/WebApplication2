@@ -4,9 +4,17 @@
         <servlet-name>Departmentmanager</servlet-name>
         <servlet-class>controller.Departmentmanager</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EmployeeController</servlet-name>
+        <servlet-class>controller.employee.EmployeeController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Departmentmanager</servlet-name>
         <url-pattern>/Departmentmanager</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmployeeController</servlet-name>
+        <url-pattern>/employee</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

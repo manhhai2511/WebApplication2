@@ -36,6 +36,7 @@ public class AccountDAOImpl extends DBContext implements AccountDAO {
             rs = prepare.executeQuery();
             while (rs.next()) {
                 Account U = new Account();
+                U.setAccountID(rs.getInt(1));
                 U.setAccountName(rs.getString(2));
                 U.setEmail(rs.getString(4));
                 U.setPassword(rs.getString(3));
