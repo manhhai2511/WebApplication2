@@ -19,6 +19,26 @@
     <servlet>
         <servlet-name>AddDepartmentController</servlet-name>
         <servlet-class>controller.AddDepartmentController</servlet-class>
+     </servlet>   
+     <servlet>
+        <servlet-name>DoctorManager</servlet-name>
+        <servlet-class>controller.DoctorManager</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddNewDoctor</servlet-name>
+        <servlet-class>controller.AddNewDoctor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditDoctor</servlet-name>
+        <servlet-class>controller.EditDoctor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoadDoctorToEdit</servlet-name>
+        <servlet-class>controller.LoadDoctorToEdit</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteDoctor</servlet-name>
+        <servlet-class>controller.DeleteDoctor</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Departmentmanager</servlet-name>
@@ -39,6 +59,26 @@
     <servlet-mapping>
         <servlet-name>AddDepartmentController</servlet-name>
         <url-pattern>/AddDepartmentController</url-pattern>
+   </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DoctorManager</servlet-name>
+        <url-pattern>/doctorManager</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddNewDoctor</servlet-name>
+        <url-pattern>/addNewDoctor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditDoctor</servlet-name>
+        <url-pattern>/editDoctor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadDoctorToEdit</servlet-name>
+        <url-pattern>/loadDoctorToEdit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteDoctor</servlet-name>
+        <url-pattern>/deleteDoctor</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
