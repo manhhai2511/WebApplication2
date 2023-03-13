@@ -18,7 +18,7 @@ public class DBContext {
             //Call Driver
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             //Connection
-            conn = DriverManager.getConnection("jdbc:sqlserver://localhost:2511;databaseName=SWD392_SE1609", "sa", "123456");
+            conn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=SWD392_SE1609", "sa", "dat12a22001");
 
             System.out.println("Connected");
         } catch (ClassNotFoundException ex) {

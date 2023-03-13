@@ -5,15 +5,15 @@
  */
 package dao;
 
-import entity.Account;
+import entity.Patient;
 import java.util.List;
 
 /**
  *
- * @author Admin
+ * @author MSI_PRO
  */
-public interface AccountDAO {
-    List<Account> getAll() throws Exception;
+public interface PatientDAO {
+    List<Patient> getAll() throws Exception;
     
-    void insert(String email, String username, String password) throws Exception;
+    public int deletePatient(int accountID) throws Exception;
 }

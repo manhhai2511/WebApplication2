@@ -85,6 +85,29 @@ public class AccountDAOImpl extends DBContext implements AccountDAO {
         return null;
     }
     
+    public void insert(String email, String username, String password) throws Exception {
+        String query = "  insert into Account(UserName,[Password],Email, [Role]) values (?,?,?,1)";
+        Connection conn = null;
+        PreparedStatement prepare = null;
+        try {
+            int result = 0;
+//            PreparedStatement st = conn.prepareStatement(query);
+
+            conn = getConnection();
+            prepare = conn.prepareStatement(query);
+
+            prepare.setString(1, username);
+            prepare.setString(2, password);
+            prepare.setString(3, email);
+//            st.executeUpdate();
+            prepare.executeUpdate();
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            closePrepareStatement(prepare);
+            closeConnection(conn);
+        }
+    }
     
     public static void main(String[] args) {
         AccountDAOImpl dao = new AccountDAOImpl();
@@ -100,5 +123,7 @@ public class AccountDAOImpl extends DBContext implements AccountDAO {
             Logger.getLogger(AccountDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    
     
 }
