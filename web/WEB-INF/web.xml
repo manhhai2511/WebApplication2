@@ -8,6 +8,18 @@
         <servlet-name>EmployeeController</servlet-name>
         <servlet-class>controller.employee.EmployeeController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditDepartmentController</servlet-name>
+        <servlet-class>controller.EditDepartmentController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteDepartmentController</servlet-name>
+        <servlet-class>controller.DeleteDepartmentController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddDepartmentController</servlet-name>
+        <servlet-class>controller.AddDepartmentController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Departmentmanager</servlet-name>
         <url-pattern>/Departmentmanager</url-pattern>
@@ -15,6 +27,18 @@
     <servlet-mapping>
         <servlet-name>EmployeeController</servlet-name>
         <url-pattern>/employee</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditDepartmentController</servlet-name>
+        <url-pattern>/EditDepartmentController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteDepartmentController</servlet-name>
+        <url-pattern>/DeleteDepartmentController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddDepartmentController</servlet-name>
+        <url-pattern>/AddDepartmentController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

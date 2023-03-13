@@ -35,6 +35,8 @@
                                             <div class="searchbar">
                                                 <input class="search_input" type="text" id="search_Account" maxlength="50" placeholder="Search by user name..." value="${txt}">
                                                 <button onclick="search();" class="search_icon"><i class="fas fa-search"></i></button>
+                                                <a href="AddDepartment.jsp"><button type="button" class="btn btn-outline-info  btn-sm">Create new Departmant</button></a>
+
                                             </div>
                                         </div>
                                         <thead>
@@ -43,7 +45,7 @@
                                                 <th>Department Name</th>						
                                                 <th>Detail</th>
                                                 <th>Note</th>
-                                                    <th>Action</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -53,28 +55,66 @@
                                                     <td>${o.getDepartmentName()}</td>
                                                     <td>${o.getDetail()}</td>
                                                     <td>${o.getNote()}</td>
-                                                    
-                                                <%--<c:if test="${sessionScope.user.getIsAdmin() == 1}">--%>
-                                                        <td>
-                                                            <a href="EditAccountController?UserID="><button type="button" class="btn btn-outline-info  btn-sm">Edit</button></a>
-                                                            <form action="deleteAccount" method="POST" style="display:inline">
-                                                                <a> <input type="submit" class="btn btn-outline-danger btn-sm" value="Delete" onclick="if (confirm('Are you sure you want to delete?'))
-                                                                            form.action = '';
-                                                                        else
-                                                                            return false;"/>  
-                                                                </a>   
-                                                            </form>
-                                                        </td>
-                                                
-                                            <%--</c:if>--%>
-                                                    
-                                            </tr>
-                                        </c:forEach>
+
+                                                    <%--<c:if test="${sessionScope.user.getIsAdmin() == 1}">--%>
+                                                    <td>
+                                                        <a href="EditDepartmentController?UserID=${o.getDepartmentID()}"><button type="button" class="btn btn-outline-info  btn-sm">Edit</button></a>
+                                                        <form action="deleteAccount" method="POST" style="display:inline">
+                                                            <a> <input type="submit" class="btn btn-outline-danger btn-sm" value="Delete" onclick="if (confirm('Are you sure you want to delete?'))
+                                                                        form.action = 'DeleteDepartmentController?UserID=${o.getDepartmentID()}';
+                                                                    else
+                                                                        return false;"/>  
+                                                            </a>   
+                                                        </form>
+                                                    </td>
+
+                                                    <%--</c:if>--%>
+
+                                                </tr>
+                                            </c:forEach>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <c:if test="${totalPage!=0}">
+                                <div class="col-12 pb-1">
+                                    <nav aria-label="Page navigation">
+                                        <ul class="pagination justify-content-center mb-3">
+                                            <li class="page-item ${indexPage==1?'disabled':''}">
+                                                <a class="page-link" href="Departmentmanager?indexPage=${indexPage-1}" aria-label="Previous">
+                                                    <span aria-hidden="true">&laquo;</span>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                            </li>
+                                            <c:forEach var="i" begin="1" end="${totalPage}"  >
+                                                <li class="page-item ${indexPage==i?'active':''}">
+                                                    <a class="page-link" href="Departmentmanager?indexPage=${i}">${i}</a></li>
+                                                </c:forEach>
+                                            <li class="page-item ${indexPage==totalPage?'disabled':''}">
+                                                <a class="page-link" href="Departmentmanager?indexPage=${indexPage+1}" aria-label="Next">
+                                                    <span aria-hidden="true">&raquo;</span>
+                                                    <span class="sr-only">Next</span>
+                                                </a>  
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </c:if>
+
+                            <c:if test="${totalPage==0}">
+                                ${mess}
+                            </c:if>  
                         </div>
                     </div>
-
                 </div>  
             </div>
         </div>
+        <script>
+            var eDelete = document.getElementById("eDelete").value;
+            if (eDelete == "false") {
+                window.alert("Can't delete account!!!");
+            }
+        </script>
     </body>
 </html>
