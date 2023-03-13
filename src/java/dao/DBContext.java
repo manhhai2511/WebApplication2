@@ -11,22 +11,39 @@ import java.util.logging.Logger;
 
 public class DBContext {
 
-    public Connection getConnection() throws Exception {
+    public Connection getConnection(){
         Connection conn = null;
         //URL: connection string: address, port, database of server
         try {
             //Call Driver
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             //Connection
-            conn = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-671LN6B;databaseName=SWD392_SE1609", "sa", "123456");
+
+            conn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=SWD392_SE1609", "sa", "123456");
 
             System.out.println("Connected");
         } catch (ClassNotFoundException ex) {
-            throw ex;
+            ex.printStackTrace();
         } catch (SQLException ex) {
-            throw ex;
+            ex.printStackTrace();
         }
         return conn;
+    }
+    
+    public ResultSet getData(String sql) {
+        Connection conn = getConnection();
+        ResultSet rs = null;
+        
+        try {
+            Statement state = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, 
+                    ResultSet.CONCUR_UPDATABLE);
+            
+            rs = state.executeQuery(sql);                     
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }     
+        
+        return rs;
     }
 
 //    public DBContext() {

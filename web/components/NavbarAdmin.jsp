@@ -16,7 +16,7 @@
     <body>
         <nav class="navbar navbar-expand-xl">
             <div class="container h-100">
-                <a class="navbar-brand" href="HomeController">
+                <a class="navbar-brand" href="">
                     <h1 class="tm-site-title mb-0">Admin Manager</h1>
                 </a>
                 <button
@@ -40,8 +40,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="ProductsController">
-                                <i class="fas fa-shopping-cart"></i> ....
+                            <a class="nav-link " href="/employee">
+                                <i class="far fa-user"></i> Employee
                             </a>
                         </li>
 

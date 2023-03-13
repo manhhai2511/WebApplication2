@@ -5,6 +5,10 @@
         <servlet-class>controller.Departmentmanager</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>EmployeeController</servlet-name>
+        <servlet-class>controller.employee.EmployeeController</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>EditDepartmentController</servlet-name>
         <servlet-class>controller.EditDepartmentController</servlet-class>
     </servlet>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>Departmentmanager</servlet-name>
         <url-pattern>/Departmentmanager</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmployeeController</servlet-name>
+        <url-pattern>/employee</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>EditDepartmentController</servlet-name>
