@@ -51,8 +51,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="blogs">
-                                <i class="fas fa-blog"></i> ....
+                            <a class="nav-link" href="doctor.jsp">
+                                <i class="fas fa-blog"></i> Doctor
                             </a>
                         </li>
                         <li class="nav-item dropdown">

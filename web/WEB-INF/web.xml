@@ -5,7 +5,6 @@
         <servlet-class>controller.Departmentmanager</servlet-class>
     </servlet>
     <servlet>
-
         <servlet-name>EditDepartmentController</servlet-name>
         <servlet-class>controller.EditDepartmentController</servlet-class>
     </servlet>
@@ -16,7 +15,8 @@
     <servlet>
         <servlet-name>AddDepartmentController</servlet-name>
         <servlet-class>controller.AddDepartmentController</servlet-class>
-
+     </servlet>   
+     <servlet>
         <servlet-name>DoctorManager</servlet-name>
         <servlet-class>controller.DoctorManager</servlet-class>
     </servlet>
@@ -35,14 +35,12 @@
     <servlet>
         <servlet-name>DeleteDoctor</servlet-name>
         <servlet-class>controller.DeleteDoctor</servlet-class>
-
     </servlet>
     <servlet-mapping>
         <servlet-name>Departmentmanager</servlet-name>
         <url-pattern>/Departmentmanager</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-
         <servlet-name>EditDepartmentController</servlet-name>
         <url-pattern>/EditDepartmentController</url-pattern>
     </servlet-mapping>
@@ -53,7 +51,8 @@
     <servlet-mapping>
         <servlet-name>AddDepartmentController</servlet-name>
         <url-pattern>/AddDepartmentController</url-pattern>
-
+   </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>DoctorManager</servlet-name>
         <url-pattern>/doctorManager</url-pattern>
     </servlet-mapping>
@@ -72,7 +71,6 @@
     <servlet-mapping>
         <servlet-name>DeleteDoctor</servlet-name>
         <url-pattern>/deleteDoctor</url-pattern>
-
     </servlet-mapping>
     <session-config>
         <session-timeout>
