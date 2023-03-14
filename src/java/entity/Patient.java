@@ -15,6 +15,7 @@ public class Patient {
     private int roomNumber;
     private int bedNumber;
     private float cost;
+
     private String date_in;
     private String date_out;
     private String note;
@@ -23,13 +24,16 @@ public class Patient {
     }
 
     public Patient(int accountID, int doctorID, int roomNumber, int bedNumber, float cost, String date_in, String date_out, String note) {
+
         this.accountID = accountID;
         this.doctorID = doctorID;
         this.roomNumber = roomNumber;
         this.bedNumber = bedNumber;
         this.cost = cost;
+
         this.date_in = date_in;
         this.date_out = date_out;
+
         this.note = note;
     }
 
@@ -101,7 +105,4 @@ public class Patient {
     public String toString() {
         return "Patient: "+getAccountID(); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
-    
 }

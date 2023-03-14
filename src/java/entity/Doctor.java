@@ -19,6 +19,8 @@ public class Doctor {
     private float salary;
     private int experience;
     private String certificate;
+    private String FullName;
+
 
     public Doctor() {
     }
@@ -32,6 +34,17 @@ public class Doctor {
         this.salary = salary;
         this.experience = experience;
         this.certificate = certificate;
+    }
+    public Doctor(int AccountID, int DepartmentID, String PositionDoctor, String DateIn, String DateOut, float Salary, int Experience, String Certificate, String FullName) {
+        this.AccountID = AccountID;
+        this.DepartmentID = DepartmentID;
+        this.PositionDoctor = PositionDoctor;
+        this.DateIn = DateIn;
+        this.DateOut = DateOut;
+        this.Salary = Salary;
+        this.Experience = Experience;
+        this.Certificate = Certificate;
+        this.FullName = FullName;
     }
 
     public int getAccountID() {
@@ -93,6 +106,12 @@ public class Doctor {
     public String getCertificate() {
         return certificate;
     }
+    public String getFullName() {
+        return FullName;
+    }
+
+    public void setFullName(String FullName) {
+        this.FullName = FullName;
 
     public void setCertificate(String certificate) {
         this.certificate = certificate;
