@@ -89,8 +89,8 @@
                             </div>
                         </div>
                     </div>
-                </div>  
-            </div>
+                </div>
+            </div>  
         </div>
         <c:forEach items="${medicalRecord}" var="z">
             <!-- Modal Medical Record-->
