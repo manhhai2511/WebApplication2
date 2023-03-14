@@ -30,7 +30,7 @@
             <div class="login">
                 <form class="form" action="LoginController" method="get">
                     <label style="margin-bottom: 100px;" for="chk" aria-hidden="true">Log in</label>
-                    <input class="input" type="email" placeholder="Email" name="email"required=""/>
+                    <input class="input" type="text" placeholder="User Name" name="username"required=""/>
                     <input class="input" type="password" placeholder="Password" name="password" required=""/>
                     <button type="submit">Log in</button>
                 </form>
@@ -39,7 +39,7 @@
             <div class="register">
                 <form class="form" action="RegisterController" method="post">
                     <label for="chk" aria-hidden="true">Register</label>     
-                    <input class="input" type="text" pattern="[A-Za-z\d\.}]{6,12}" title="Username must bettween 6-12 character,contains only letters,numbers" placeholder="UserName" placeholder="UserName" name="username" value="${username1}" required="" />
+                    <input class="input" type="text"   placeholder="UserName" placeholder="UserName" name="username" value="${username1}" required="" />
                     <input class="input" type="email" placeholder="Email" name="email" value="${email1}" required=""/>
                     <input class="input" type="password"  title="Password must more than 8 character,at least one digit,at least one upper letter,at least one special character, not contain space" placeholder="Password" name="password" required="" />                  
                     <input class="input" type="password" placeholder="rePassword" name="repassword" />

@@ -17,6 +17,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -80,6 +82,19 @@ public class PatientDAOImpl extends DBContext implements PatientDAO{
         return n;
     }
 
-    
+    public static void main(String[] args) {
+        PatientDAOImpl dao = new PatientDAOImpl();
+        try {
+            List<Patient> u = new ArrayList<Patient>();
+            u = dao.getAll();
+            System.out.println(u.isEmpty());
+            for (Patient users : u) {
+                System.out.println(users);
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(AccountDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 }

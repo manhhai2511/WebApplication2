@@ -42,7 +42,7 @@ public class LoginController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginController</title>");            
+            out.println("<title>Servlet LoginController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet LoginController at " + request.getContextPath() + "</h1>");
@@ -63,26 +63,32 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            String email = request.getParameter("email").trim();  //Lay email
-            String password = request.getParameter("password").trim();  //Lay password
+        response.setContentType("text/html;charset=UTF-8");
+
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            HttpSession session = request.getSession();
+            String service = request.getParameter("do");
             AccountDAOImpl dao = new AccountDAOImpl();
-            List<Account> list = dao.getAll(); //Lay ra list user
-            for (Account accounts : list) {
-                if (accounts.getEmail().equals(email) && accounts.getPassword().equals(password)) {  //Kiem tra email va password nhap vao co trung trong database khong
-                    accounts=dao.getAccountByID(accounts.getAccountID());
-                    HttpSession session = request.getSession();
-                    session.setAttribute("account", accounts);
-                    request.getRequestDispatcher("home.jsp").forward(request, response); //Neu dang nhap thanh cong chuyen den home
+
+            Account acc = new Account();
+
+            String user = request.getParameter("username");
+            String pass = request.getParameter("password");
+            acc = dao.getAccount(user, pass);
+            if (service == null) {
+                if (acc != null) {
+                    session.setAttribute("account", acc);
+                    response.sendRedirect("home.jsp");
+                } else {
+                    String name = "Please try again!!!";
+                    request.setAttribute("err", name);
+                    RequestDispatcher dispath = request.getRequestDispatcher("login.jsp");
+                    dispath.forward(request, response);
                 }
             }
-            String text = "Your email or password is incorrect"; //Neu dang nhap that bai chuyen den trang login va bat dang nhap lai
-            request.setAttribute("alert", text);
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        } catch (Exception e) {
-            request.setAttribute("ex", e);
-            RequestDispatcher dispatcher2 = request.getRequestDispatcher("/error.jsp");
-            dispatcher2.forward(request, response);
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 

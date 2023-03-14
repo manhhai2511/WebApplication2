@@ -16,4 +16,6 @@ public interface AccountDAO {
     List<Account> getAll() throws Exception;
     
     void insert(String email, String username, String password) throws Exception;
+    
+   public Account getAccount(String user, String pass) throws Exception;
 }

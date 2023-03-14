@@ -85,6 +85,7 @@ public class RegisterController extends HttpServlet {
             String text = "";
             AccountDAOImpl dao = new AccountDAOImpl();
             List<Account> list = dao.getAll();   //Lay ra list user
+           
             for (Account users : list) {
                 if (users.getEmail().equalsIgnoreCase(email)) { //Neu email da ton tai chuyen den trang login va bao loi
                     text = "The email already exits";
@@ -116,6 +117,7 @@ public class RegisterController extends HttpServlet {
                 session.setAttribute("email2", email);
                 session.setAttribute("username2", username);
                 session.setAttribute("password", password);
+                dao.insert(email, username, password);
                 request.getRequestDispatcher("home.jsp").forward(request, response); //Chuyen den trang thankyou.jsp
             } catch (Exception e) {
                 System.out.println(e);
