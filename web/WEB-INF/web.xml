@@ -40,6 +40,18 @@
         <servlet-name>DeleteDoctor</servlet-name>
         <servlet-class>controller.DeleteDoctor</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DoctorController</servlet-name>
+        <servlet-class>controller.DoctorController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PatientController</servlet-name>
+        <servlet-class>controller.PatientController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MedicalRecordController</servlet-name>
+        <servlet-class>controller.MedicalRecordController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Departmentmanager</servlet-name>
         <url-pattern>/Departmentmanager</url-pattern>
@@ -79,6 +91,18 @@
     <servlet-mapping>
         <servlet-name>DeleteDoctor</servlet-name>
         <url-pattern>/deleteDoctor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DoctorController</servlet-name>
+        <url-pattern>/DoctorController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PatientController</servlet-name>
+        <url-pattern>/PatientController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MedicalRecordController</servlet-name>
+        <url-pattern>/MedicalRecordController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

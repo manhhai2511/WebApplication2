@@ -6,14 +6,16 @@
 package dao;
 
 import entity.Patient;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
- * @author MSI_PRO
+ * @author Admin
  */
 public interface PatientDAO {
+    public ArrayList<Patient> getAllPatient() throws Exception;
+    Patient getPatientByID(String Id) throws Exception;
     List<Patient> getAll() throws Exception;
-    
     public int deletePatient(int accountID) throws Exception;
 }

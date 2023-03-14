@@ -7,7 +7,7 @@ package entity;
 
 /**
  *
- * @author MSI_PRO
+ * @author Admin
  */
 public class Patient {
     private int accountID;
@@ -15,21 +15,25 @@ public class Patient {
     private int roomNumber;
     private int bedNumber;
     private float cost;
-    private String dateIn;
-    private String dateOut;
+
+    private String date_in;
+    private String date_out;
     private String note;
 
     public Patient() {
     }
 
-    public Patient(int accountID, int doctorID, int roomNumber, int bedNumber, float cost, String dateIn, String dateOut, String note) {
+    public Patient(int accountID, int doctorID, int roomNumber, int bedNumber, float cost, String date_in, String date_out, String note) {
+
         this.accountID = accountID;
         this.doctorID = doctorID;
         this.roomNumber = roomNumber;
         this.bedNumber = bedNumber;
         this.cost = cost;
-        this.dateIn = dateIn;
-        this.dateOut = dateOut;
+
+        this.date_in = date_in;
+        this.date_out = date_out;
+
         this.note = note;
     }
 
@@ -73,20 +77,20 @@ public class Patient {
         this.cost = cost;
     }
 
-    public String getDateIn() {
-        return dateIn;
+    public String getDate_in() {
+        return date_in;
     }
 
-    public void setDateIn(String dateIn) {
-        this.dateIn = dateIn;
+    public void setDate_in(String date_in) {
+        this.date_in = date_in;
     }
 
-    public String getDateOut() {
-        return dateOut;
+    public String getDate_out() {
+        return date_out;
     }
 
-    public void setDateOut(String dateOut) {
-        this.dateOut = dateOut;
+    public void setDate_out(String date_out) {
+        this.date_out = date_out;
     }
 
     public String getNote() {
@@ -99,8 +103,6 @@ public class Patient {
 
     @Override
     public String toString() {
-        return "Patient{" + "accountID=" + accountID + ", doctorID=" + doctorID + ", roomNumber=" + roomNumber + ", bedNumber=" + bedNumber + ", cost=" + cost + ", dateIn=" + dateIn + ", dateOut=" + dateOut + ", note=" + note + '}';
+        return "Patient: "+getAccountID(); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
 }
