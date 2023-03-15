@@ -36,14 +36,14 @@ public class Doctor {
         this.certificate = certificate;
     }
     public Doctor(int AccountID, int DepartmentID, String PositionDoctor, String DateIn, String DateOut, float Salary, int Experience, String Certificate, String FullName) {
-        this.AccountID = AccountID;
-        this.DepartmentID = DepartmentID;
-        this.PositionDoctor = PositionDoctor;
-        this.DateIn = DateIn;
-        this.DateOut = DateOut;
-        this.Salary = Salary;
-        this.Experience = Experience;
-        this.Certificate = Certificate;
+        this.accountID = AccountID;
+        this.departmentID = DepartmentID;
+        this.position_Doctor = PositionDoctor;
+        this.date_in = DateIn;
+        this.date_out = DateOut;
+        this.salary = Salary;
+        this.experience = Experience;
+        this.certificate = Certificate;
         this.FullName = FullName;
     }
 
@@ -113,6 +113,8 @@ public class Doctor {
     public void setFullName(String FullName) {
         this.FullName = FullName;
 
+    }
+    
     public void setCertificate(String certificate) {
         this.certificate = certificate;
     }

@@ -88,8 +88,8 @@ public class PatientDAOImpl extends DBContext implements PatientDAO{
                 P.setRoomNumber(rs.getInt(3));
                 P.setBedNumber(rs.getInt(4));
                 P.setCost(rs.getFloat(5));
-                P.setDateIn(rs.getString(6));
-                P.setDateOut(rs.getString(7));
+                P.setDate_in(rs.getString(6));
+                P.setDate_out(rs.getString(7));
                 P.setNote(rs.getString(8));
                 list.add(P);
             }

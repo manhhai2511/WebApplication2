@@ -5,19 +5,26 @@
  */
 package controller;
 
-import dao.impl.DoctorDAOImpl;
+import dao.impl.AccountDAOImpl;
+import dao.impl.DepartmentDAOImpl;
+import dao.impl.PatientDAOImpl;
+import entity.Department;
+import entity.Patient;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author msi
+ * @author MSI_PRO
  */
-public class DeleteDoctor extends HttpServlet {
+@WebServlet(name = "PatientManager", urlPatterns = {"/PatientManager"})
+public class PatientManagerController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,18 +38,18 @@ public class DeleteDoctor extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
         try {
-            boolean t;
-            //Get ID from JSP
-            String id = request.getParameter("AccountID");
-            //Call DAO
-            DoctorDAOImpl dao = new DoctorDAOImpl();
-            //Use function Delete to delete by ID
-            dao.deleteDoctor(id);
-            response.sendRedirect("doctorManager"); 
-        } catch (Exception e) {
+            
+            //Get data from DAO
+            PatientDAOImpl patientDAO = new PatientDAOImpl();
+            // Get total Page of list product(each page have max 6 products)
 
+             List<Patient> listPatient = patientDAO.getAll();
+            //Get total page
+            //Set data to JSP
+            request.setAttribute("list", listPatient);
+            request.getRequestDispatcher("patientManager.jsp").forward(request, response);
+        } catch (Exception e) {
             response.sendRedirect("error.jsp");
         }
     }

@@ -6,8 +6,10 @@
 package controller;
 
 import dao.impl.DoctorDAOImpl;
+import entity.Doctor;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author msi
  */
-public class AddNewDoctor extends HttpServlet {
+public class LoadDoctorToEditController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,25 +33,11 @@ public class AddNewDoctor extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            request.setCharacterEncoding("UTF-8");
-            String accountid = request.getParameter("AccountID");
-            String department = request.getParameter("DepartmentID");
-            String position = request.getParameter("PositionDoctor");
-            String dateIn = request.getParameter("DateIn");
-            String dateOut = request.getParameter("DateOut");
-            String salary = request.getParameter("Salary");
-            String experience = request.getParameter("Experience");
-            String certificate = request.getParameter("Certificate");
-            String fullname = request.getParameter("FullName");
-            
-            DoctorDAOImpl dao = new DoctorDAOImpl();
-            dao.AddDoctor(accountid, department, position, dateIn, dateOut, salary, experience, certificate, fullname);
-            response.sendRedirect("doctorManager");
-            
-
-        }
+        String AccountID = request.getParameter("AccountID");
+        DoctorDAOImpl dao = new DoctorDAOImpl();
+        Doctor d = dao.getDoctorByID(AccountID);
+        request.setAttribute("list", d);
+        request.getRequestDispatcher("EditDoctor.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

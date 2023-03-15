@@ -6,10 +6,8 @@
 package controller;
 
 import dao.impl.DoctorDAOImpl;
-import entity.Doctor;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author msi
  */
-public class LoadDoctorToEdit extends HttpServlet {
+public class DeleteDoctorController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,11 +31,20 @@ public class LoadDoctorToEdit extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String AccountID = request.getParameter("AccountID");
-        DoctorDAOImpl dao = new DoctorDAOImpl();
-        Doctor d = dao.getDoctorByID(AccountID);
-        request.setAttribute("list", d);
-        request.getRequestDispatcher("EditDoctor.jsp").forward(request, response);
+        request.setCharacterEncoding("UTF-8");
+        try {
+            boolean t;
+            //Get ID from JSP
+            String id = request.getParameter("AccountID");
+            //Call DAO
+            DoctorDAOImpl dao = new DoctorDAOImpl();
+            //Use function Delete to delete by ID
+            dao.deleteDoctor(id);
+            response.sendRedirect("doctorManager"); 
+        } catch (Exception e) {
+
+            response.sendRedirect("error.jsp");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

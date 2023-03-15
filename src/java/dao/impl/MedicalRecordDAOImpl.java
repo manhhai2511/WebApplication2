@@ -40,9 +40,9 @@ public class MedicalRecordDAOImpl extends DBContext implements MedicalRecordDAO{
                 R.setMedical_ID(rs.getInt("ID_medical"));
                 R.setDoctorID(rs.getInt("DoctorID"));
                 R.setPtID(rs.getInt("PtID"));
-                R.setDate_in(rs.getString("Date_in"));
-                R.setDate_in(rs.getString("Date_out"));
-                R.setContent(rs.getString("Content"));
+                R.setDate_in(rs.getDate("Date_in").toString());
+                R.setDate_out(rs.getDate("Date_out").toString());
+                R.setContent(rs.getString("Content").toString());
                 list.add(R);
             }
         } catch (Exception ex) {

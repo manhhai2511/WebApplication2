@@ -2,7 +2,7 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>Departmentmanager</servlet-name>
-        <servlet-class>controller.Departmentmanager</servlet-class>
+        <servlet-class>controller.DepartmentmanagerController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EmployeeController</servlet-name>
@@ -19,26 +19,26 @@
     <servlet>
         <servlet-name>AddDepartmentController</servlet-name>
         <servlet-class>controller.AddDepartmentController</servlet-class>
-     </servlet>   
-     <servlet>
+    </servlet>
+    <servlet>
         <servlet-name>DoctorManager</servlet-name>
-        <servlet-class>controller.DoctorManager</servlet-class>
+        <servlet-class>controller.DoctorManagerController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddNewDoctor</servlet-name>
-        <servlet-class>controller.AddNewDoctor</servlet-class>
+        <servlet-class>controller.AddNewDoctorController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EditDoctor</servlet-name>
-        <servlet-class>controller.EditDoctor</servlet-class>
+        <servlet-class>controller.EditDoctorController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LoadDoctorToEdit</servlet-name>
-        <servlet-class>controller.LoadDoctorToEdit</servlet-class>
+        <servlet-class>controller.LoadDoctorToEditController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteDoctor</servlet-name>
-        <servlet-class>controller.DeleteDoctor</servlet-class>
+        <servlet-class>controller.DeleteDoctorController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DoctorController</servlet-name>
@@ -71,7 +71,7 @@
     <servlet-mapping>
         <servlet-name>AddDepartmentController</servlet-name>
         <url-pattern>/AddDepartmentController</url-pattern>
-   </servlet-mapping>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DoctorManager</servlet-name>
         <url-pattern>/doctorManager</url-pattern>

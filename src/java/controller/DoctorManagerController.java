@@ -1,6 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package controller;
 
+import dao.impl.DepartmentDAOImpl;
+import dao.impl.DoctorDAOImpl;
 import entity.Department;
+import entity.Doctor;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -8,14 +16,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import dao.impl.DepartmentDAOImpl;
-import java.util.ArrayList;
 
 /**
  *
- *Management account of user
+ * @author msi
  */
-public class Departmentmanager extends HttpServlet {
+public class DoctorManagerController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,35 +36,19 @@ public class Departmentmanager extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try {
-            int indexPage = 1;
-            // get the Page position being displayed to the user so that page transitions can be performed
-            String index = request.getParameter("indexPage");
-            if (index != null) {
-                indexPage = Integer.parseInt(index);
-            }
-            request.setAttribute("indexPage", indexPage);
-            //Get data from DAO
-            DepartmentDAOImpl departmentDAO = new DepartmentDAOImpl();
-            // Get total Page of list product(each page have max 6 products)
-
-            List<Department> listAccount = departmentDAO.getUsersList(6 * (indexPage - 1) + 1, 6 * indexPage);
-            //Get total page
-            int totalPage = departmentDAO.getTotalPage();
-            request.setAttribute("totalPage", totalPage);
             
             //Get data from DAO
-//            DepartmentDAOImpl departmentDAO = new DepartmentDAOImpl();
+            DoctorDAOImpl doctorDAO = new DoctorDAOImpl();
             // Get total Page of list product(each page have max 6 products)
 
-             List<Department> listDepartment1 = departmentDAO.getAllDe();
+             List<Doctor> listDoctor = doctorDAO.getAllDoctor();
             //Get total page
             //Set data to JSP
-            request.setAttribute("list", listAccount);
-            request.getRequestDispatcher("newjsp.jsp").forward(request, response);
+            request.setAttribute("list", listDoctor);
+            request.getRequestDispatcher("doctor.jsp").forward(request, response);
         } catch (Exception e) {
             response.sendRedirect("error.jsp");
         }
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

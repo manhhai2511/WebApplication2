@@ -5,13 +5,9 @@
  */
 package controller;
 
-import dao.impl.DepartmentDAOImpl;
 import dao.impl.DoctorDAOImpl;
-import entity.Department;
-import entity.Doctor;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author msi
  */
-public class DoctorManager extends HttpServlet {
+public class EditDoctorController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,19 +31,24 @@ public class DoctorManager extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try {
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            request.setCharacterEncoding("UTF-8");
+            String accountid = request.getParameter("AccountID");
+            String department = request.getParameter("DepartmentID");
+            String position = request.getParameter("PositionDoctor");
+            String dateIn = request.getParameter("DateIn");
+            String dateOut = request.getParameter("DateOut");
+            String salary = request.getParameter("Salary");
+            String experience = request.getParameter("Experience");
+            String certificate = request.getParameter("Certificate");
+            String fullname = request.getParameter("FullName");
             
-            //Get data from DAO
-            DoctorDAOImpl doctorDAO = new DoctorDAOImpl();
-            // Get total Page of list product(each page have max 6 products)
-
-             List<Doctor> listDoctor = doctorDAO.getAllDoctor();
-            //Get total page
-            //Set data to JSP
-            request.setAttribute("list", listDoctor);
-            request.getRequestDispatcher("doctor.jsp").forward(request, response);
-        } catch (Exception e) {
-            response.sendRedirect("error.jsp");
+            
+            
+            DoctorDAOImpl dao = new DoctorDAOImpl();
+            dao.EditDoctor( position, dateIn, dateOut, salary, experience, certificate, fullname, accountid);
+            response.sendRedirect("doctorManager");
         }
     }
 

@@ -5,13 +5,30 @@
  */
 package dao;
 
+import entity.Account;
+import entity.Department;
 import entity.Doctor;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
- * @author Admin
+ * @author msi
  */
 public interface DoctorDAO {
-    ArrayList<Doctor> getAll() throws Exception;
+    List<Doctor> getAllDoctor() throws Exception;
+    ArrayList<Doctor> getDoctorList(int start, int end) throws Exception;
+    int getTotalPage() throws Exception;
+    void AddDoctor(String AccountID, String DepartmentID, String PositionDoctor, String DateIn, String DateOut,
+            String Salary, String Experience, String Certificate, String FullName);
+    
+//    void AddDoctorTest2( String PositionDoctor, String DateIn, String DateOut,
+//            String Salary, String Experience, String Certificate, String FullName);
+    
+    void EditDoctor(String PositionDoctor, String DateIn, String DateOut,
+            String Salary, String Experience, String Certificate, String FullName,String accountid);
+    
+    
+     Doctor getDoctorByID (String AccountID);
+     void deleteDoctor(String id) throws Exception ;
 }

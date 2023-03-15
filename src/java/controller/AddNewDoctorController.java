@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author msi
  */
-public class EditDoctor extends HttpServlet {
+public class AddNewDoctorController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,11 +44,11 @@ public class EditDoctor extends HttpServlet {
             String certificate = request.getParameter("Certificate");
             String fullname = request.getParameter("FullName");
             
-            
-            
             DoctorDAOImpl dao = new DoctorDAOImpl();
-            dao.EditDoctor( position, dateIn, dateOut, salary, experience, certificate, fullname, accountid);
+            dao.AddDoctor(accountid, department, position, dateIn, dateOut, salary, experience, certificate, fullname);
             response.sendRedirect("doctorManager");
+            
+
         }
     }
 
