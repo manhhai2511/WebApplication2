@@ -88,6 +88,30 @@ public class MedicalRecordDAOImpl extends DBContext implements MedicalRecordDAO{
         }
         return P;
     }
+
+    @Override
+    public int updateMedicalRecord(MedicalRecord medicalRecord) throws Exception {
+        int n =0;
+        Connection conn = null;
+        PreparedStatement pre = null;
+        String sql = "update Medical_Record set Content=? "
+                + " where ID_medical=? ";
+
+        try {
+            conn = getConnection();
+            pre = conn.prepareStatement(sql);
+            pre.setString(1, medicalRecord.getContent());
+            pre.setInt(2, medicalRecord.getPtID());
+            
+            n = pre.executeUpdate();
+        } catch (Exception ex) {
+            throw ex;
+        }finally{
+            closePrepareStatement(pre);
+            closeConnection(conn);
+        }
+        return n;
+    }
     
     
     

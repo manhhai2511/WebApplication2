@@ -19,24 +19,18 @@
 
     </head>
     <body>
-        <div class="container-fluid">
+<!--        <div class="container-fluid">
             <div class="row">
-                <div class="col-10">
+                <div class="col-10">-->
                     <div class="container">
-
                         <div class="row">
                             <div class="table-responsive">
                                 <div class="table-wrapper">
                                     <h2 style="font-family: Brush Script MT; text-align: center; font-size: 60px">Patients Management</h2>
                                     <br>
-                                    <div class="d-flex justify-content-lg-start h-100">
-                                        <div class="searchbar">
-                                            <input class="search_input" type="text" id="search_Account" maxlength="50" placeholder="Search by user name...">
-                                            <button onclick="search();" class="search_icon"><i class="fas fa-search"></i></button>
-                                        </div>
-                                    </div>
+                                    <h6 style="color: green">${message}</h6>
                                     <table class="table table-hover">
-                                        <thead>
+                                        <thead class="thead-dark">
                                             <tr>
                                                 <th>Patient ID</th>
                                                 <th>Patient Name</th>						
@@ -48,7 +42,6 @@
                                                 <th>Cost</th>
                                                 <th>Note</th>
                                                 <th>Health Record</th>
-                                                <th>Health History</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -75,12 +68,6 @@
                                                             View
                                                         </button>
                                                     </td>
-                                                    <td>
-                                                        <!-- Button trigger modal -->
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter${p.getAccountID()}">
-                                                            View
-                                                        </button>
-                                                    </td>
                                                 </tr>
                                             </c:forEach>
                                         </tbody>
@@ -89,34 +76,51 @@
                             </div>
                         </div>
                     </div>
-                </div>
+<!--                </div>
             </div>  
-        </div>
+        </div>-->
         <c:forEach items="${medicalRecord}" var="z">
             <!-- Modal Medical Record-->
             <div class="modal fade" id="exampleModalCenter${z.getPtID()}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Medical Record ${z.getPtID()}</h5>
+                        <div class="modal-header ">
+                            <c:forEach items="${accountList}" var="a">
+                                <c:if test="${a.getAccountID()==z.getPtID()}">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">${a.getAccountName()} Medical Record</h5>
+                                </c:if>
+                            </c:forEach>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body" >
-                            Date In: <h3 id="recordID">${z.getDate_in()}</h3>
-                            Date Out: <h3 id="recordID">${z.getDate_out()}</h3>
-                            Date In: <h3 id="recordID">${z.getContent()}</h3>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
+                        <form action="DoctorController" method="POST">
+                            <div class="modal-body " >
+                                <input type="hidden" name="recordId" value="${z.getMedical_ID()}"/>
+
+                                <c:forEach items="${accountList}" var="a">
+                                    <c:if test="${a.getAccountID()==z.getPtID()}">
+                                        <h5> Patient Name: ${a.getAccountName()} </h5>
+                                    </c:if>
+                                    <c:if test="${a.getAccountID()==z.getDoctorID()}">
+                                    <h5> Doctor Name: ${a.getAccountName()}</h5>
+                                    </c:if>
+                                </c:forEach>
+                                <h5 id="recordID">Date In: ${z.getDate_in()}</h5>
+                                <h5 id="recordID">Date Out: ${z.getDate_out()}</h5>
+                                <h5 >Content</h5>
+                                <!--<label for="exampleFormControlTextarea1">Content</label>-->
+                                <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="3">${z.getContent()}</textarea>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" onclick="this.form.submit()" class="btn btn-primary">Save changes</button>
+                            </div> 
+                        </form>
                     </div>
                 </div>
             </div>
         </c:forEach>
-
     </body>
 
 </html>

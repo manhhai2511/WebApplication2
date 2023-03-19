@@ -18,4 +18,5 @@ public interface MedicalRecordDAO {
     
     MedicalRecord getMedicalRecordByPtID(String ptID) throws Exception;
     
+    int updateMedicalRecord(MedicalRecord medicalRecord) throws Exception;
 }

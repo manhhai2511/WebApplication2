@@ -52,7 +52,7 @@ public class DoctorController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DoctorController</title>");            
+            out.println("<title>Servlet DoctorController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet DoctorController at " + request.getContextPath() + "</h1>");
@@ -74,29 +74,28 @@ public class DoctorController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         PatientDAO patientDAO = new PatientDAOImpl();
         AccountDAO accountDAO = new AccountDAOImpl();
         RoomBedDAO roomBedDAO = new RoomBedDAOImpl();
         MedicalRecordDAO recordDAO = new MedicalRecordDAOImpl();
-        try{
-            
-            ArrayList<MedicalRecord> medicalRecord=recordDAO.getAll();
+        try {
+
+            ArrayList<MedicalRecord> medicalRecord = recordDAO.getAll();
             request.setAttribute("medicalRecord", medicalRecord);
-            
-            ArrayList<Patient> patientList =  patientDAO.getAllPatient();
+
+            ArrayList<Patient> patientList = patientDAO.getAllPatient();
             request.setAttribute("patientList", patientList);
-            
+
             ArrayList<Account> accountList = (ArrayList<Account>) accountDAO.getAll();
             request.setAttribute("accountList", accountList);
-            
+
             ArrayList<Room_bed> room_beds = (ArrayList<Room_bed>) roomBedDAO.getAll();
             request.setAttribute("room_beds", room_beds);
-            
-            
+
             RequestDispatcher dispatcher = request.getRequestDispatcher("PTManagement.jsp");
             dispatcher.forward(request, response);
-        }catch(Exception e){
+        } catch (Exception e) {
             response.sendRedirect("error.jsp");
         }
     }
@@ -111,8 +110,39 @@ public class DoctorController extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+            throws ServletException, IOException {PatientDAO patientDAO = new PatientDAOImpl();
+        AccountDAO accountDAO = new AccountDAOImpl();
+        RoomBedDAO roomBedDAO = new RoomBedDAOImpl();
+        MedicalRecordDAO recordDAO = new MedicalRecordDAOImpl();
+        try {
+            int id = Integer.parseInt(request.getParameter("recordId"));
+            String content = request.getParameter("content");
+            
+            MedicalRecord record = new MedicalRecord();
+            record.setPtID(id);
+            record.setContent(content);
+            
+            int n = recordDAO.updateMedicalRecord(record);
+            request.setAttribute("message", "Update Medical Record For Patient Successfully");
+            
+            ArrayList<MedicalRecord> medicalRecord = recordDAO.getAll();
+            request.setAttribute("medicalRecord", medicalRecord);
+
+            ArrayList<Patient> patientList = patientDAO.getAllPatient();
+            request.setAttribute("patientList", patientList);
+
+            ArrayList<Account> accountList = (ArrayList<Account>) accountDAO.getAll();
+            request.setAttribute("accountList", accountList);
+
+            ArrayList<Room_bed> room_beds = (ArrayList<Room_bed>) roomBedDAO.getAll();
+            request.setAttribute("room_beds", room_beds);
+
+            RequestDispatcher dispatcher = request.getRequestDispatcher("PTManagement.jsp");
+            dispatcher.forward(request, response);
+            
+        } catch (Exception e) {
+            response.sendRedirect("error.jsp");
+        }
     }
 
     /**
